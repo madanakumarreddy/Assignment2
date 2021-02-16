@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    <form class="main-form ">
+        <mat-form-field class="full-width">
+            <mat-label>From</mat-label>
+            <input type="text" placeholder="Choose" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" (keyup)="filterData()" aria-label="Number" matInput [matAutocomplete]="auto" required>
+
+            <mat-autocomplete #auto="matAutocomplete">
+
+
+                <mat-option [(ngModel)]="city" [ngModelOptions]="{standalone: true}" (click)='addIn()'>
+                    <mat-icon aria-hidden="false" aria-label="Example add icon" style="color: blue;">add</mat-icon>Add New</mat-option>
+                <mat-option *ngIf="!option"><input type="text"></mat-option>
+                <mat-option *ngFor="let option of locations" [value]="option">
+                    {{option}}
+                </mat-option>
+
+            </mat-autocomplete>
+        </mat-form-field>&nbsp;&nbsp;
+
+        <mat-form-field class="full-width ml-5">
+            <mat-label>To</mat-label>
+            <input type="text" placeholder="Choose" [(ngModel)]="searchText1" [ngModelOptions]="{standalone: true}" (keyup)="filterData2()" aria-label="Number" matInput [matAutocomplete]="auto" required>
+
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of locations" [value]="option">
+                    {{option}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>
+</div>
